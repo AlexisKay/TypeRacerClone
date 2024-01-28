@@ -1,1 +1,3 @@
 # TypeRacerClone
+
+Small practice project
