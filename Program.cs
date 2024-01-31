@@ -22,24 +22,28 @@ public class Program
         ConsoleHelpers.CenterLines("Enter Your Name: \r\n");
         string? userName = Console.ReadLine();
 
-        ClearConsoleLines(3);
+        ConsoleHelpers.ClearConsoleLines(3);
         ConsoleHelpers.CenterLines($"Welcome, {userName}, Ready to play? \r\n");
 
+        ConsoleHelpers.CenterLines("╔═══════════════════╗");
+        ConsoleHelpers.CenterLines("[1] to play", "[2] for highscores", "[ESC] to exit");
+        ConsoleHelpers.CenterLines("╚═══════════════════╝");
 
-        //Delete name entry before welcome line displays
-        //pop up menus in box 
+        ConsoleKeyInfo keyInfo = Console.ReadKey();
 
-        ConsoleHelpers.CenterLines("ENTER to play", "BACKSPACE to see scores", "ESC to exit");
-
-    }
-
-    public static void ClearConsoleLines(int lines = 1)
-    {
-        for(int i = 0; i < lines; i++)
+        if (keyInfo.Key == ConsoleKey.D1)
         {
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            //go to play
+        }
+        else if (keyInfo.Key == ConsoleKey.D2)
+        {
+            //go to scoreboard 
+        }
+        else if(keyInfo.Key == ConsoleKey.Escape)
+        {
+            Console.WriteLine("Shutting down game..");
+            Environment.Exit(0);
         }
     }
+
 }
