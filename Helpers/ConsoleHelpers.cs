@@ -36,14 +36,16 @@ namespace TypeRacerClone.Helpers
                 Console.SetCursorPosition((Console.WindowWidth - line.Length) / 2, Console.CursorTop);
                 Console.WriteLine(line);
             }
+            Console.ResetColor();
         }
 
-        public static void ClearLine(int lines = 1)
+        public static void ClearConsoleLines(int lines = 1)
         {
-            for(int i = 0; i <= lines; i++)
+            for (int i = 0; i < lines; i++)
             {
                 Console.SetCursorPosition(0, Console.CursorTop - 1);
-                Console.Write(new string(' ', Console.WindowWidth));
+                Console.WriteLine(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
             }
         }
 
