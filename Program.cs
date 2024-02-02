@@ -1,10 +1,14 @@
 ﻿
+using System.Security.Cryptography.X509Certificates;
 using TypeRacerClone.Helpers;
+using TypeRacerClone.MenuPages;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        
+
         #region Title
 
         Console.Title = "TypeRacerClone - By AlexisKay.";
@@ -34,6 +38,7 @@ public class Program
         if (keyInfo.Key == ConsoleKey.D1)
         {
             //go to play
+            MainGame.ParseTxt();
         }
         else if (keyInfo.Key == ConsoleKey.D2)
         {
