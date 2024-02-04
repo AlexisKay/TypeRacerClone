@@ -7,7 +7,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        
+        MainGame mainGame = new MainGame();
 
         #region Title
 
@@ -35,10 +35,12 @@ public class Program
 
         ConsoleKeyInfo keyInfo = Console.ReadKey();
 
+
         if (keyInfo.Key == ConsoleKey.D1)
         {
             //go to play
-            MainGame.ParseTxt();
+            mainGame.InitializeGame();
+
         }
         else if (keyInfo.Key == ConsoleKey.D2)
         {
