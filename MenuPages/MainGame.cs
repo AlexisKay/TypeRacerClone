@@ -17,7 +17,7 @@ namespace TypeRacerClone.MenuPages
         public TimeSpan TimeElapsed;
         public System.Timers.Timer CountdownTimer;
         private bool gameStarted;
-
+        public static KeyValuePair<string, string> randomEntry;
         const int PADDING = 12;
         public void InitializeGame()
         {
@@ -106,6 +106,7 @@ namespace TypeRacerClone.MenuPages
 
             //timer start TODO: not working correctly
             CountdownTimer.Start();
+            gameStarted = true;
 
             if (TimeElapsed < TimeSpan.FromSeconds(10))
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -118,7 +119,7 @@ namespace TypeRacerClone.MenuPages
 
             //randomize parsed prompts:
             Random rand = new Random();
-            var randomEntry = promptDict.ElementAt(rand.Next(0, promptDict.Count));
+            randomEntry = promptDict.ElementAt(rand.Next(0, promptDict.Count));
             string prompt = randomEntry.Key;
             string quote = "- " + randomEntry.Value;
 
@@ -143,7 +144,7 @@ namespace TypeRacerClone.MenuPages
                             StartGame();
                         else if (gameStarted)
                         {
-                            StringComparer();
+                            
                         }
                         break;
 
@@ -157,8 +158,14 @@ namespace TypeRacerClone.MenuPages
             }
         }
 
-        private static void StringComparer()
+        public static void StringComparer()
         {
+            //everytime letter is added check for sub string?
+            //check whole input for now i guess?
+
+            var promptLetters = randomEntry.Key.ToString().Split("");
+
+
 
 
         }
