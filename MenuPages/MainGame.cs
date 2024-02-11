@@ -126,6 +126,14 @@ namespace TypeRacerClone.MenuPages
             Console.WriteLine("\r\n"+ prompt + "\r\n");
             ConsoleHelpers.CenterLines(quote);
 
+            ConsoleKeyInfo userInput;
+
+            do
+            {
+                userInput  = Console.ReadKey(true);
+
+            } while (userInput.Key != ConsoleKey.Enter);
+
 
         }
 
@@ -144,16 +152,13 @@ namespace TypeRacerClone.MenuPages
                             StartGame();
                         else if (gameStarted)
                         {
-                            
+                            //next prompt?
                         }
                         break;
 
                     case ConsoleKey.Escape:
                         break;
-                    default:
-                        Console.Write(keyinfo.KeyChar);
-                        break;
-
+                    
                 }
             }
         }
@@ -162,9 +167,33 @@ namespace TypeRacerClone.MenuPages
         {
             //everytime letter is added check for sub string?
             //check whole input for now i guess?
+            bool wrongInput = false;
+            string? answer = Console.ReadLine();
+            var promptLetters = randomEntry.Key.ToCharArray();
+            var userletters = answer.ToCharArray();
 
-            var promptLetters = randomEntry.Key.ToString().Split("");
+            char tempholder;
+            //char[] results = new char[userletters.Length];
 
+            for (int i=0; i < userletters.Length; i++)
+            {
+
+                if (userletters[i] == promptLetters[i])
+                {
+                    wrongInput = false;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    tempholder = userletters[i];
+                    Console.Write(tempholder);
+                }
+                else
+                {
+                    wrongInput = true;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    tempholder = userletters[i];
+                    Console.Write(tempholder);
+
+                }
+            }
 
 
 
