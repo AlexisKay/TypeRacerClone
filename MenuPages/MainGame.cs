@@ -126,11 +126,37 @@ namespace TypeRacerClone.MenuPages
             Console.WriteLine("\r\n"+ prompt + "\r\n");
             ConsoleHelpers.CenterLines(quote);
 
+
+            //read user inputs here?
             ConsoleKeyInfo userInput;
+            List<char> userInputchars = new List<char>();
+            char[] promptArr = randomEntry.Key.ToCharArray();
+
+            int counter = 0;
 
             do
             {
                 userInput  = Console.ReadKey(true);
+
+                userInputchars.Add(userInput.KeyChar);
+               
+                int index = userInputchars.IndexOf(userInput.KeyChar);
+
+                if (userInput.Key == ConsoleKey.Backspace)
+                {
+                    //remove last item?
+                }
+
+                if (promptArr[index] == userInputchars[index])
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write(userInput.KeyChar);
+                }
+                else if(promptArr[index] != userInputchars[index])
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(userInput.KeyChar);
+                }
 
             } while (userInput.Key != ConsoleKey.Enter);
 
